@@ -51,13 +51,19 @@ class Mail
     public function send()
     {
         $mail = $this->mail;
-        if(!$mail->send())
+        try
         {
-            //echo 'Não foi possível enviar a mensagem.<br>';
-            //echo 'Erro: ' . $mail->ErrorInfo;
-        } else
+            if(!$mail->send())
+            {
+                //echo 'Não foi possível enviar a mensagem.<br>';
+                //echo 'Erro: ' . $mail->ErrorInfo;
+            } else
+            {
+                //echo 'Mensagem enviada.';
+            }
+        }catch(\Exception)
         {
-            //echo 'Mensagem enviada.';
+            return;
         }
     }
     /*
